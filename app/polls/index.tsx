@@ -9,7 +9,7 @@ import { Poll } from "@/src/api/types";
 export default function PollList() {
   const [data, setData] = useState<Poll[]>([]);
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     (async () => {
       try {

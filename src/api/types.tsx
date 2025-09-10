@@ -16,13 +16,14 @@ export interface Poll {
 export type GetAllPollsResponse = {
   polls: Poll[];
 };
-export type GetPollByIdResponse = Poll;
+export type GetPollByIdResponse = {
+  poll: Poll;
+};
 
 export interface VoteRequest {
   optionId: string;
 }
 
 export interface VoteResponse {
-  success: boolean;
   poll: Poll;
 }

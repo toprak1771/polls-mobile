@@ -8,7 +8,7 @@ export const PollsService = {
     return data;
   },
 
-  async getById(id: number): Promise<GetPollByIdResponse> {
+  async getById(id: number): Promise<GetPollByIdResponse | null> {
     const { data } = await api.get<GetPollByIdResponse>(EP.polls.detail(id));
     return data;
   },

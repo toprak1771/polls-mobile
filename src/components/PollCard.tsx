@@ -2,13 +2,9 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
 import { Link } from "expo-router";
+import { PoolCardProps } from "../types/pool-card.types";
 
-type Props = {
-  id: number | string;
-  question: string;
-};
-
-export default function PollCard({ id, question }: Props) {
+export default function PollCard({ id, question }: PoolCardProps) {
   return (
     <View style={{ padding: 16, borderWidth: 1, borderRadius: 12, marginBottom: 12 }}>
       <Text style={{ fontWeight: "700", marginBottom: 8 }}>{question}</Text>
