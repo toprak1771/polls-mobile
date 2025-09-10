@@ -1,6 +1,6 @@
 // components/PollDetail.tsx
 import React, { useEffect, useState, useCallback } from "react";
-import { View, Text, Pressable, ActivityIndicator, Alert } from "react-native";
+import { View, Text, Pressable, ActivityIndicator, Alert, FlatList } from "react-native";
 import { GetPollByIdResponse, Poll } from "../api/types";
 import { PollsService } from "../services/polls.services";
 
@@ -81,9 +81,14 @@ export default function PollDetail({ id }: { id: number }) {
     <View style={{ gap: 12 }}>
       <Text style={{ fontWeight: "700", fontSize: 18 }}>{poll.question}</Text>
 
-      {poll.options.map((opt: any) => (
-        <OptionItem key={opt.id} opt={opt} submitting={submitting} onVote={onVote} />
-      ))}
+      <FlatList
+        data={poll.options}
+        keyExtractor={(o: any) => String(o.id)}
+        renderItem={({ item }) => (
+          <OptionItem opt={item} submitting={submitting} onVote={onVote} />
+        )}
+        ItemSeparatorComponent={() => <View style={{ height: 12 }} />}
+      />
     </View>
   );
 }
